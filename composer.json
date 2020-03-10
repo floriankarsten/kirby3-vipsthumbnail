@@ -1,0 +1,15 @@
+{
+    "name": "floriankarsten/kirby3-vipsthumbnail",
+    "description": "Kirby3 vipsthumbnail thumbnail driver",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Florian Karsten",
+            "email": "code@floriankarsten.com"
+        }
+    ],
+    "require": {
+        "getkirby/composer-installer": "^1.1"
+    }
+}

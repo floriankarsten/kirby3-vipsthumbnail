@@ -47,8 +47,8 @@ class Vipsthumbnail
 	function logMessage($log_msg)
 	{
 		// dumblog from stack overflow please no judging
-		if (!empty($this->options['logpath'])) {
-			$log_filename = $this->options['logpath'];
+		if (!empty($this->options['logdir'])) {
+			$log_filename = $this->options['logdir'];
 		} else {
 			$log_filename = __DIR__ . "/logs";
 		}

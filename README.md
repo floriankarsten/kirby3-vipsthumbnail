@@ -13,7 +13,10 @@ Vips has some options that i don't understand (like trellis-quant, overshoot-der
 
 - ```strip``` default: true - strips metadata from images
 - ```autoOrient``` default: false - aplies orientation meta tag if its present (in vips flag --rotate)
-- ```interlace``` default: flase - gnerate an interlaced (progressive) jpeg
+- ```interlace``` default: flase - generate an interlaced (progressive) jpeg
+- ```log``` default: flase - There is dumb loging included if you want to debug what is going on and what commands are getting fired
+- ```logdir``` default: plugindirectory/logs - connected to above - set where to save logs.
+
 
 You can set these with normal thumbs kirby config. Kirby options like 'quality' and 'bin' apply.
 ```

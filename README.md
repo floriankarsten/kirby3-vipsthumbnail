@@ -8,6 +8,12 @@ Vips is library similar to Imagemagick but uses much less memory and it's faster
 ## Why use ImageMagick or GD
 This library is aimed only at resizing and cropping. Kirby's other thumb functions like grayscale, blur won't work. Cropping right now uses vips "smartcrop" algorythm which might be advantage but you can't set cropping by hand (could be easily implemented i just don't have use for it).
 
+## Installation
+
+Download and copy this repository to ```/site/plugins/kirby3-vipsthumbnail```
+
+Alternatively, you can install it with composer: ```composer require floriankarsten/kirby3-vipsthumbnail```
+
 ## Output options
 Vips has some options that i don't understand (like trellis-quant, overshoot-deringing, optimize-scans) but these options are currently implemented:
 

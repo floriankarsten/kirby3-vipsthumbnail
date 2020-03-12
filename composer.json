@@ -3,6 +3,7 @@
     "description": "Kirby3 vipsthumbnail thumbnail driver",
     "type": "kirby-plugin",
     "license": "MIT",
+    "version": "0.0.1",
     "authors": [
         {
             "name": "Florian Karsten",

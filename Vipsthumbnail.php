@@ -34,10 +34,10 @@ class Vipsthumbnail
 		return [
 			'bin'           => 'vipsthumbnail',
 			'interlace'     => false,
-			'autoOrient'    => true,
+			'autoOrient'    => false,
 			'crop'          => false,
 			'height'        => null,
-			'strip'         => false,
+			'strip'         => true,
 			'quality'       => 90,
 			'width'         => null,
 			'log'           => false

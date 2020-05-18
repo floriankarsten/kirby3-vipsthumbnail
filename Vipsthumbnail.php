@@ -34,12 +34,12 @@ class Vipsthumbnail
 		return [
 			'bin'           => 'vipsthumbnail',
 			'interlace'     => false,
-			'autoOrient'    => false,
+			'autoOrient'    => true,
 			'crop'          => false,
-			'height'        => null,
-			'strip'         => true,
+			'height'        ,
+			'strip'         => false,
 			'quality'       => 90,
-			'width'         => null,
+			'width'         ,
 			'log'           => false
 		];
 	}
@@ -47,8 +47,8 @@ class Vipsthumbnail
 	function logMessage($log_msg)
 	{
 		// dumblog from stack overflow please no judging
-		if (!empty($this->options['logdir'])) {
-			$log_filename = $this->options['logdir'];
+		if (!empty($this->options['logpath'])) {
+			$log_filename = $this->options['logpath'];
 		} else {
 			$log_filename = __DIR__ . "/logs";
 		}
@@ -80,16 +80,22 @@ class Vipsthumbnail
 		}
 	}
 
+	protected function generateOutputOptions()
+	{
+		$allowedOptions = ['optimize_coding','optimize_scans','trellis_quant','interlace', 'strip', 'overshoot_deringing'];
+
+		$outputOptions = array_intersect_key($allowedOptions, $this->options);
+
+		return implode(',', array_filter($outputOptions));
+	}
+
 	public function process(): string
 	{
 
 		$command = [];
 		$outputOptions = [];
 
-		$outputOptions[] = $this->strip();
-		$outputOptions[] = $this->interlace();
-		$outputOptions[] = $this->quality();
-		$outputOptions = implode(',', array_filter($outputOptions));
+		$outputOptions = $this->generateOutputOptions();
 
 		$command[] = $this->convert();
 		$command[] = $this->autoOrient();
@@ -99,7 +105,7 @@ class Vipsthumbnail
 
 		// remove all null values and join the parts
 		$command = implode(' ', array_filter($command));
-
+		$this->logMessage($command);
 		if ($this->options['log'] === true) {
 			$this->logMessage($command);
 		}

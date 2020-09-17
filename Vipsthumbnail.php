@@ -18,8 +18,10 @@ class Vipsthumbnail
 	{
 		$this->src = $src;
 		$this->dst = $dst;
+		$thumbOptions = option('thumbs') ?? [];
+
 		// option merging: plugin defaults > config options > options from image
-		$this->options = array_merge($this->defaults(), option('thumbs'), array_filter($options));
+		$this->options = array_merge($this->defaults(), $thumbOptions, array_filter($options));
 
 		if ($this->options['log'] === true) {
 			// $this->logMessage(json_encode($this->defaults()));

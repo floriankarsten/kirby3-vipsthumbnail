@@ -118,6 +118,7 @@ class Vipsthumbnail
 
 	protected function save($outputOptions): string
 	{
+
 		return sprintf('-o %s[%s]', $this->dst, $outputOptions);
 	}
 

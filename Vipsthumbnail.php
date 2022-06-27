@@ -1,5 +1,6 @@
 <?php
 
+
 namespace Floriankarsten;
 
 use Exception;
@@ -105,6 +106,7 @@ class Vipsthumbnail
 		if ($this->options['log'] === true) {
 			$this->logMessage($command);
 		}
+		ray($command);
 		// try to execute the command
 		exec($command, $output, $return);
 
@@ -120,6 +122,7 @@ class Vipsthumbnail
 	{
 
 		return sprintf('-o %s[%s]', $this->dst, $outputOptions);
+		// return sprintf('-o %s[%s]', $this->dst, $outputOptions);
 	}
 
 
@@ -134,24 +137,25 @@ class Vipsthumbnail
 		// normalize crop
 		// here it should be possible to take $this->options['crop'] "center" etc to make crops by direction
 		// dirty weak check $this->options['crop'] == true if its either true or string "center" etc
+		ray($this->options['crop']);
+		ray($this->options['height']);
 		if (is_string($this->options['crop'])) {
 			$this->options['crop'] = true;
 		}
-
 
 		// simple resize
 		if ($this->options['crop'] === false) {
 			return sprintf('--size %sx%s', $this->options['width'], $this->options['height']);
 		}
 
-		if ($this->options['crop'] === true && $this->options['height'] === 0) {
+		if ($this->options['crop'] === true && $this->options['height'] == 0) {
 			// assume crop to square like ->crop(100)
 			return sprintf('--size %sx%s --smartcrop attention', $this->options['width'], $this->options['width']);
 		}
 
 		if ($this->options['crop'] === true) {
 			// assume crop with exact sizes
-			return sprintf('--size %sx%s --smartcrop attention', $this->options['width'], $this->options['width']);
+			return sprintf('--size %sx%s --smartcrop attention', $this->options['width'], $this->options['height']);
 		}
 	}
 
